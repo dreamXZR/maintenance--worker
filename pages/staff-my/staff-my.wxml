@@ -1,0 +1,14 @@
+  <view class="head">
+    <image class="head_img" bindtap="userInfo" src="../../images/admin.png"></image>
+    <text class="name">黑眼豆豆</text>
+  </view>
+  <view class="hx"></view>
+   <view class="box" bindtap="myinfo">
+    <image class="my_box" src="../../images/my.png"></image>
+    <text class="my_name">我的个人信息</text>
+  </view>
+  <view class="box" bindtap="message">
+    <image class="message_box" src="../../images/message.png"></image>
+    <text class="message_name">工作信息</text>
+  </view> 
+

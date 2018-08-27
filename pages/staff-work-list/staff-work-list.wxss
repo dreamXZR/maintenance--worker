@@ -1,0 +1,27 @@
+/* pages/staff-work-list/staff-work-list.wxss */
+.view-hx{
+  height: 30rpx;
+}
+.work{
+  height: 100rpx;
+  margin-top: 10rpx;
+  background-color: #fff;
+}
+.work-name{
+  position: relative;
+  font-family: PingFang-SC-Medium;
+  font-size: 37.44rpx;
+  color: #3c4350;
+  top: 20rpx;
+  left: 40rpx;
+}
+.but_pay{
+  float: right;
+  font-size: 23rpx;
+  width:160rpx;
+  margin-top: 22rpx;
+  color: #FF473D;
+  background-color: #FFFFFF;
+  margin-right: 30rpx;
+  border: 1rpx solid #FF473D;
+}

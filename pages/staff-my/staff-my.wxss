@@ -1,0 +1,52 @@
+/* pages/staff-my/staff-my.wxss */
+/* pages/my/my.wxss */
+.head{
+  height: 269rpx;
+  background: linear-gradient(to right, #FF473D , #FFA170);
+}
+.head_img{
+  position: relative;
+  width: 117rpx;
+  height: 117rpx;
+  top:32rpx;
+  left:320rpx;
+  border-radius: 50%;
+}
+.name{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  font-size: 37rpx;
+  top:40rpx;
+  color: #ffffff;
+}
+ .box{
+  height:117rpx;
+  margin-top: 5rpx;
+  background-color: #ffffff;
+} 
+
+.my_box,.message_box{
+  position: relative;
+  top:25rpx;
+  left:30rpx;
+  width: 61rpx;
+  height: 61rpx;
+}
+.my_name,.message_name{
+  position: relative;
+  top:5rpx;
+  left:40rpx;
+  font-size: 33rpx;
+  color: #2C2C2C;
+}
+.hx{
+  height: 20rpx;
+}
+
+
+
+
+
+
+

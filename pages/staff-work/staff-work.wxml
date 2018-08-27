@@ -1,0 +1,44 @@
+<!--pages/staff-work/staff-work.wxml-->
+
+<view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+<view class="close_icon" bindtap="setModalStatus" data-status="0">×</view>
+<!--抽屉层中内容-->
+  <view class="drawer_attr_content">
+    <view class="seach">
+      <input class="seach-input"  type="text" confirm-type='search' bindinput='input1' bindconfirm='confirm1'></input>
+      <text class="seach-name">搜索</text>
+    </view>
+    <view class="gongxu-hx"></view>
+    <view wx:for="{{step}}" wx:for-item="h">
+      <view class="gongxu" data-id='{{h.id}}' data-type="{{h.type}}" bindtap='select'>{{h.name}}</view>
+    </view>
+    
+  </view>
+</view>
+<!--正文-->
+ <view class="view-hx"></view>
+<view class="title">1号车的订件工作</view>
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view wx:for="{{stepList}}">
+    <view class="process">
+      <view class="process-title">
+        <text class="process-title-name">{{item.step_name}}</text>
+        <text class="process-title-number">数量</text>
+        <view class="close_icon" bindtap="dropStep" data-index="{{index}}">×</view>
+      </view>
+      <view wx:for="{{item.data}}" wx:for-index="idx" wx:for-item="itemName">
+        <view class="process-first">
+          <text class="process-first-name">{{itemName.title}}</text>
+          <input class="process-first-input" type="number" value='0' name="t_{{itemName.id}}_{{itemName.parent_id}}"></input>
+        </view>
+      </view>
+    </view>
+    <view class="view-hx"></view>
+  </view>
+
+
+  <view class="view-hx-buttom"></view>
+  <button  class="button" bindtap="setModalStatus" data-status="1">请选择工序</button>
+  <button  class="formButton" formType="submit">确认提交</button>
+</form>

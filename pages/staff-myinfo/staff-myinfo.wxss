@@ -1,0 +1,59 @@
+@import '../../model/model.wxss';
+page{
+  height: 100%;
+  background-color: #F4F4F4;
+}
+.box{
+  height: 30rpx;
+}
+.container{
+  z-index: 2;
+}
+.container view{
+  z-index: 2;
+}
+.name-view{
+  position: relative;
+  height: 105rpx;
+  background-color: #FFFFFF;
+}
+.name-text,.phone-text{
+  position: relative;
+  font-size: 33rpx;
+  top:30rpx;
+  left: 37rpx;
+  color:#3D4451; 
+}
+.name-input{
+  position: absolute;
+  font-size: 33rpx;
+  top:30rpx;
+  left:200rpx;
+  color:#A4A6AD; 
+}
+.phone-view{
+  height: 105rpx;
+  margin-top: 3rpx;
+  background-color: #FFFFFF;
+}
+.phone-input{
+  position: absolute;
+  font-size: 33rpx;
+  top:168rpx;
+  left:200rpx;
+  color:#A4A6AD; 
+}
+
+.button{
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+   bottom: 0rpx;
+  font-size: 40rpx;
+  height: 94rpx;
+  color: #FFFFFF;
+  margin-top: 50rpx;
+  background-color: #FF473D;
+  border-radius: 0rpx;
+}
+

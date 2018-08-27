@@ -1,0 +1,8 @@
+<!--pages/staff-work-list/staff-work-list.wxml-->
+<view class="view-hx"></view>
+<view wx:for="{{FixingsList}}">
+  <view class="work">
+    <text class="work-name">{{item.type}}-{{item.servicing}}-{{item.number}}</text>
+    <button class="but_pay" bindtap="staffwork" data-id="{{item.id}}">去订件</button>
+  </view>
+</view>

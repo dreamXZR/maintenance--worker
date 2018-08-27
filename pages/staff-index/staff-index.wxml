@@ -1,0 +1,29 @@
+<view class="name-view">
+  <view class="name">天津伯士乐建中液压技术有限公司</view>
+</view>
+<view class="work-list">
+  <text class="title">维修工作列表</text>
+  <scroll-view class="view-list" scroll-y="true">
+  <view wx:for="{{orderList}}">
+    <view class="listinfo">
+      <text class="list-name">{{item.type}}_{{item.servicing}} 编号：{{item.number}}</text>
+      <button class="but_pay" bindtap="receiveWork" data-id='{{item.id}}'>点击查看</button>
+    </view>
+    <view class="list-hx"></view>
+  </view>
+    
+    
+  </scroll-view>
+</view>
+<view class="my-work">
+  <text class="my-work-name">我的维修工作</text>
+  <view class="work-name">
+    <text class="nameinfo">{{myOrder[0].p_name}}{{myOrder[0].name}} 数量：{{myOrder[0].number}}</text>
+    <button class="but_work" bindtap="accomplishWork" data-id='{{myOrder[0].id}}'>点击完成</button>
+  </view>
+</view>
+<view class="dingjian">
+  <text class="dingjian-name">订件</text>
+  <button class="but_dingjian" bindtap="staffworklist">订件入口</button>
+</view>
+<button  class="button" bindtap="staffmy">个人中心</button>
