@@ -8,7 +8,7 @@ Page({
   data: {
   
   },
-  //订件入库
+  //订件入口
   staffworklist: function () {
     wx.request({
       url: api +'isAppoint/'+wx.getStorageSync('worker_id'),
@@ -42,9 +42,22 @@ Page({
   },
   //接取工作提示
   receiveWork:function(e){
-    wx.navigateTo({
-      url: '/pages/staff-order-list/staff-order-list?id=' + e.currentTarget.dataset.id,
+    wx.request({
+      url: api +'isPass/'+wx.getStorageSync('worker_id'),
+      success:function(res){
+        if(res.data.status){
+          wx.navigateTo({
+            url: '/pages/staff-order-list/staff-order-list?id=' + e.currentTarget.dataset.id,
+          })
+        }else{
+          wx.showToast({
+            title: res.data.message,
+            icon:'none'
+          })
+        }
+      }
     })
+    
   },
   
   //完成工作提示
@@ -117,16 +130,16 @@ Page({
       })
     } else {
       // 获取用户信息
-      wx.request({
-        url: api + 'getUserInfo',
-        method: 'POST',
-        data: {
-          worker_id: wx.getStorageSync('worker_id'),
-        },
-        success: function (res) {
-          getApp().globalData.userInfo = res.data
-        }
-      })
+      // wx.request({
+      //   url: api + 'getUserInfo',
+      //   method: 'POST',
+      //   data: {
+      //     worker_id: wx.getStorageSync('worker_id'),
+      //   },
+      //   success: function (res) {
+      //     getApp().globalData.userInfo = res.data
+      //   }
+      // })
     }
   },
 
@@ -143,6 +156,15 @@ Page({
           orderList:res.data
         })
        
+      }
+    })
+    //公司信息
+    wx.request({
+      url: api + 'compayInfo',
+      success: function (res) {
+        that.setData({
+          name: res.data.compay_info.name,
+        })
       }
     })
     

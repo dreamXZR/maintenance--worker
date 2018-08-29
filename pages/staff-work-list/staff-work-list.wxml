@@ -1,8 +1,13 @@
-<!--pages/staff-work-list/staff-work-list.wxml-->
-<view class="view-hx"></view>
-<view wx:for="{{FixingsList}}">
-  <view class="work">
-    <text class="work-name">{{item.type}}-{{item.servicing}}-{{item.number}}</text>
-    <button class="but_pay" bindtap="staffwork" data-id="{{item.id}}">去订件</button>
-  </view>
+<view wx:if="{{FixingsList.length==0}}" class='order'>
+  <image src='../../images/no-message.png' style='width:90rpx;height:92rpx'></image>
+  <view>暂无信息</view>
 </view>
+
+  <view class="view-hx"></view>
+  <view wx:for="{{FixingsList}}">
+    <view class="work">
+      <text class="work-name">{{item.number}}</text>
+      <button class="but_pay" bindtap="staffwork" data-id="{{item.id}}" data-number='{{item.number}}'>去订件</button>
+    </view>
+  </view>
+

@@ -1,9 +1,12 @@
 <view class="name-view">
-  <view class="name">天津伯士乐建中液压技术有限公司</view>
+  <view class="name">{{name}}</view>
 </view>
 <view class="work-list">
   <text class="title">维修工作列表</text>
   <scroll-view class="view-list" scroll-y="true">
+  <view wx:if="{{orderList.length==0}}" class='order'>
+    <view class="title">暂无工作信息</view>
+  </view>
   <view wx:for="{{orderList}}">
     <view class="listinfo">
       <text class="list-name">{{item.type}}_{{item.servicing}} 编号：{{item.number}}</text>

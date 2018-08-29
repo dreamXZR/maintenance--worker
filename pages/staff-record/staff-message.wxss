@@ -1,3 +1,4 @@
+/* pages/staff-message/staff-message.wxss */
 .hx{
   height: 3rpx;
   background-color: #f4f4f4;
@@ -29,12 +30,6 @@
   display:-webkit-box;
   -webkit-line-clamp:1;
   -webkit-box-orient:vertical;
-}
-.order{
-  color: #ced5d5;
-  text-align: center;
-  margin-top: 200rpx;
-  
 }
 
 

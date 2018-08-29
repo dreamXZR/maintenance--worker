@@ -25,3 +25,9 @@
   margin-right: 30rpx;
   border: 1rpx solid #FF473D;
 }
+.order{
+  color: #ced5d5;
+  text-align: center;
+  margin-top: 200rpx;
+  
+}

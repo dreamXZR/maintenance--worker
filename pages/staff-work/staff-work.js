@@ -48,7 +48,8 @@ Page({
     //步骤全部显示
     var that=this
     that.setData({
-      order_id: options.id
+      order_id: options.id,
+      number: options.number
     })
     wx.request({
       url: api +'TemRoStepList/'+1,
@@ -69,6 +70,21 @@ Page({
       }
     })
     //已添加的步骤
+    wx.request({
+      url: api + 'jsonShow',
+      method: "POST",
+      data: {
+        order_id: options.id,
+      },
+      success: function (res) {
+        
+        that.setData({
+          stepList: JSON.parse(res.data.json.order_json)
+        })
+        
+      }
+    })
+    
     
   },
   //选择维修步骤
@@ -93,7 +109,8 @@ Page({
               that.setData({
                 stepList: arr
               })
-              that.setModalStatus()
+              
+              that.setModalStatus(e)
              
             }
           })
@@ -115,43 +132,74 @@ Page({
   //提交维修步骤
   formSubmit: function (e){
     var that = this;
-    var form_data = e.detail.value; //提交信息
+    
+    if(that.data.stepList.length==0){
+      wx.showToast({
+        title: '请添加步骤',
+        icon:'none'
+      })
+      return false;
+    }
+   var form_data = e.detail.value; //提交信息
     wx.showModal({
       title:'提示',
       content:'是否提交该定件？',
       success:function(res){
         if (res.confirm) {
             wx.request({
-              url: api +'steps',
+              url: api +'jsonSave',
               method:'POST',
               data:{
-                step_json: form_data,
-                order_id:that.data.order_id
+                stepList: JSON.stringify(that.data.stepList),
+                order_id: that.data.order_id
               },
               success:function(res){
-                if(res.data.status){
-                  wx.showToast({
-                    title: res.data.message,
-                    icon: 'none',
-                    success:function(){
-                      setTimeout(function(){
-                        wx.navigateBack({})
-                      },2000)
+                
+                wx.request({
+                  url: api + 'steps',
+                  method: 'POST',
+                  data: {
+                    step_json: form_data,
+                    order_id: that.data.order_id
+                  },
+                  success: function (res) {
+                    if (res.data.status) {
+                      wx.showToast({
+                        title: res.data.message,
+                        icon: 'none',
+                        success: function () {
+                          setTimeout(function () {
+                            wx.navigateBack({})
+                          }, 2000)
+                        }
+                      })
+                    } else {
+                      wx.showToast({
+                        title: res.data.message,
+                        icon: 'none'
+                      })
                     }
-                  })
-                }else{
-                  wx.showToast({
-                    title: res.data.message,
-                    icon:'none'
-                  })
-                }
+                  }
+                })
               }
             })
+            
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
-      }
+     }
     })
+  },
+  changeValue:function(e){
+    var that=this
+    if (e.detail.value){
+      
+      var index_arr=e.currentTarget.dataset.index.split('_')
+      var data=that.data.stepList[index_arr[0]].data
+      data[index_arr[1]].value = parseInt(e.detail.value)
+    }
+    
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -164,7 +212,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
+    
   },
 
   /**

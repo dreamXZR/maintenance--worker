@@ -1,11 +1,14 @@
-// pages/staff-my/staff-my.js
+var app = getApp();
+var api = getApp().globalData.api;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    userInfo: {},
+    hasUserInfo: false,
+    getUserInfoFail: false,
   },
   myinfo: function () {
     wx.navigateTo({
@@ -15,6 +18,11 @@ Page({
   message: function () {
     wx.navigateTo({
       url: '/pages/staff-message/staff-message'
+    })
+  },
+  record:function(){
+    wx.navigateTo({
+      url: '/pages/staff-record/staff-record'
     })
   },
   /**
@@ -35,7 +43,34 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    if (app.globalData.userInfo) {
+
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            
+            hasUserInfo: true
+          })
+        }
+      })
+    }
   },
 
   /**

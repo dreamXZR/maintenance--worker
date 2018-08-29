@@ -1,4 +1,5 @@
-// pages/staff-message/staff-message.js
+// pages/message/message.js
+var api = getApp().globalData.api;
 Page({
 
   /**
@@ -26,7 +27,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that=this;
+    wx.request({
+      url: api +'messageList',
+      method:'POST',
+      data:{
+        worker_id:wx.getStorageSync('worker_id')
+      },
+      success:function(res){
+        that.setData({
+          message:res.data.data
+        })
+      }
+    })
   },
 
   /**

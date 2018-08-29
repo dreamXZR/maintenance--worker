@@ -1,4 +1,4 @@
-var api = getApp().globalData.api;
+// pages/staff-message/staff-message.js
 Page({
 
   /**
@@ -7,12 +7,7 @@ Page({
   data: {
   
   },
-  staffwork: function (e) {
 
-    wx.navigateTo({
-      url: '/pages/staff-work/staff-work?id=' + e.currentTarget.dataset.id + "&number=" + e.currentTarget.dataset.number
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -31,15 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that=this
-    wx.request({
-      url: api +'FixingsList',
-      success:function(res){
-        that.setData({
-          FixingsList:res.data
-        })
-      }
-    })
+  
   },
 
   /**
