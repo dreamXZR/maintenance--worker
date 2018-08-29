@@ -160,7 +160,8 @@ Page({
                   method: 'POST',
                   data: {
                     step_json: form_data,
-                    order_id: that.data.order_id
+                    order_id: that.data.order_id,
+                    worker_id:wx.getStorageSync('worker_id')
                   },
                   success: function (res) {
                     if (res.data.status) {

@@ -8,7 +8,7 @@ Page({
   
   },
   staffwork: function (e) {
-
+    
     wx.navigateTo({
       url: '/pages/staff-work/staff-work?id=' + e.currentTarget.dataset.id + "&number=" + e.currentTarget.dataset.number
     })
