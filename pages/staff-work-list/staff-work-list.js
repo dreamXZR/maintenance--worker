@@ -5,13 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    
   },
   staffwork: function (e) {
+    var worker_id = e.currentTarget.dataset.worker_id
+    if (!worker_id || worker_id==wx.getStorageSync('worker_id')){
+      wx.navigateTo({
+        url: '/pages/staff-work/staff-work?id=' + e.currentTarget.dataset.id + "&number=" + e.currentTarget.dataset.number
+      })
+    }else{
+      wx.showToast({
+        title:'您无法定件',
+        icon:'none'
+      })
+    }
     
-    wx.navigateTo({
-      url: '/pages/staff-work/staff-work?id=' + e.currentTarget.dataset.id + "&number=" + e.currentTarget.dataset.number
-    })
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -35,8 +44,9 @@ Page({
     wx.request({
       url: api +'FixingsList',
       success:function(res){
+        
         that.setData({
-          FixingsList:res.data
+          FixingsList:res.data.data
         })
       }
     })

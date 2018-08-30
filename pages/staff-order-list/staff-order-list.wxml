@@ -1,5 +1,5 @@
 <view class="name-view">
-  <view class="name">天津伯士乐建中液压技术有限公司</view>
+  <view class="name">{{name}}</view>
 </view>
 <view class="work-list">
   <text class="title">维修步骤列表</text>

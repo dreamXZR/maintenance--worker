@@ -1,15 +1,26 @@
-<!--pages/staff-message/staff-message.wxml-->
+<view class="section">
+  
+  <picker mode="date" value="{{date}}"  bindchange="bindDateChange" fields='month'>
+    <view class="picker">
+      请选择日期: {{data}}
+    </view>
+  </picker>
+</view>
 <view class="container">
   <view class="hx"></view>
+  <view wx:if="{{recordList.length==0}}" class='order'>
+    <image src='../../images/no-message.png' style='width:90rpx;height:92rpx'></image>
+    <view>暂无信息</view>
+  </view>
+  <view wx:for="{{recordList}}">
     <view class="message" >
-      <text class="message-name">完成1号车拆卸工作</text> 
-       <view class="message-time">2018.12.12</view> 
+      <text class="message-name">{{item.number}}{{item.detail}}</text> 
+       <view class="message-time">{{item.finish_time}}</view> 
     </view>
     <view class="hx"></view>
-    <view class="message" >
-      <text class="message-name">完成1号车安装工作</text> 
-       <view class="message-time">2018.12.12</view> 
-    </view>
+  </view>
+    
+    
 </view>
 
 

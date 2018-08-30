@@ -11,7 +11,7 @@
   color: #3c4350;
 }
 .work-list{
-  height: 500rpx;
+  height: 100%;
   background-color: #fff;
 }
 .title{

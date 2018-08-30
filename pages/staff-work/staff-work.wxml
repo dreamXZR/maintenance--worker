@@ -11,7 +11,7 @@
     </view>
     <view class="gongxu-hx"></view>
     <view wx:for="{{step}}" wx:for-item="h">
-      <view class="gongxu" data-id='{{h.id}}' data-type="{{h.type}}" bindtap='select' data-status='0'>{{h.name}}</view>
+      <view class="gongxu" data-id='{{h.id}}' data-type="{{h.type}}" bindtap='select' data-status='0' wx:if="{{h.show}}">{{h.name}}</view>
     </view>
     
   </view>

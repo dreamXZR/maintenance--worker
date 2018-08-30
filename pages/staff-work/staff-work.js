@@ -62,6 +62,11 @@ Page({
           url: api + 'TemRoStepList/' + 2,
           success: function (res) {
             var arr = that.data.step.concat(res.data.data)
+            
+            wx.setStorage({
+              key: 'step',
+              data: arr,
+            })
             that.setData({
               step: arr
             })
@@ -78,9 +83,12 @@ Page({
       },
       success: function (res) {
         
-        that.setData({
-          stepList: JSON.parse(res.data.json.order_json)
-        })
+        if (res.data.json){
+          that.setData({
+            stepList: JSON.parse(res.data.json.order_json)
+          })
+        }
+        
         
       }
     })
@@ -201,6 +209,41 @@ Page({
     }
     
     
+  },
+  input1:function(e){
+    this.search(e.detail.value)
+  },
+  search:function(key){
+    var that=this
+    var stepList=wx.getStorage({
+      key: 'step',
+      success: function(res) {
+        if(key==''){
+          that.setData({
+            step:res.data
+          })
+          return;
+        }
+        var arr=[]
+        for(let i in res.data){
+          res.data[i].show=false
+          if(res.data[i].search.indexOf(key)>=0){
+            res.data[i].show=true
+            arr.push(res.data[i])
+          }
+        }
+        if(arr.length==0){
+          that.setData({
+            step:[{show:true,name:'无相关数据'}]
+          })
+        }else{
+          that.setData({
+            step:arr
+          })
+        }
+      },
+      
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

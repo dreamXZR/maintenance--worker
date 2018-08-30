@@ -123,7 +123,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var that=this
+    //公司信息
+    wx.request({
+      url: api + 'compayInfo',
+      success: function (res) {
+        that.setData({
+          name: res.data.compay_info.name,
+        })
+      }
+    })
   },
 
   /**

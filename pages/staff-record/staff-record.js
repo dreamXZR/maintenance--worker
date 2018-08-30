@@ -1,11 +1,11 @@
-// pages/staff-message/staff-message.js
+var api = getApp().globalData.api;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    data:'请选择'
   },
 
   /**
@@ -26,9 +26,41 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that=this
+    wx.request({
+      url: api +'record',
+      method:'POST',
+      data:{
+        worker_id:wx.getStorageSync('worker_id')
+      },
+      success:function(res){
+        that.setData({
+          recordList:res.data.data
+        })
+        
+      }
+    })
   },
+  bindDateChange:function(e){
+    var that=this
+    that.setData({
+      data: e.detail.value
+    })
+    wx.request({
+      url: api + 'record',
+      method: 'POST',
+      data: {
+        worker_id: wx.getStorageSync('worker_id'),
+        time: e.detail.value
+      },
+      success: function (res) {
+        that.setData({
+          recordList: res.data.data
+        })
 
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

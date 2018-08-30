@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    myOrder:[]
   },
   //订件入口
   staffworklist: function () {
@@ -81,7 +81,9 @@ Page({
                   title: res.data.message,
                   icon: 'none',
                   success:function(){
-                    that.onLoad()
+                    that.setData({
+                      myOrder: []
+                    })
                   }
                 })
               }else{
@@ -104,19 +106,7 @@ Page({
    */
   onLoad: function (options) {
     var that=this
-    //我的维修任务
-    wx.request({
-      url: api + 'taked',
-      method: 'POST',
-      data: {
-        worker_id: wx.getStorageSync('worker_id')
-      },
-      success: function (res) {
-        that.setData({
-          myOrder: res.data.data
-        })
-      }
-    })
+    
   },
 
   /**
@@ -164,6 +154,19 @@ Page({
       success: function (res) {
         that.setData({
           name: res.data.compay_info.name,
+        })
+      }
+    })
+    //我的维修任务
+    wx.request({
+      url: api + 'taked',
+      method: 'POST',
+      data: {
+        worker_id: wx.getStorageSync('worker_id')
+      },
+      success: function (res) {
+        that.setData({
+          myOrder: res.data.data
         })
       }
     })
