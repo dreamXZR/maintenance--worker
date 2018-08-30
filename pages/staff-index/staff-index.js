@@ -119,17 +119,12 @@ Page({
         url: '../login/login',
       })
     } else {
-      // 获取用户信息
-      // wx.request({
-      //   url: api + 'getUserInfo',
-      //   method: 'POST',
-      //   data: {
-      //     worker_id: wx.getStorageSync('worker_id'),
-      //   },
-      //   success: function (res) {
-      //     getApp().globalData.userInfo = res.data
-      //   }
-      // })
+      //获取用户信息
+      wx.getUserInfo({
+        success: function (res) {
+          getApp().globalData.userInfo = res.userInfo
+        }
+      })
     }
   },
 
