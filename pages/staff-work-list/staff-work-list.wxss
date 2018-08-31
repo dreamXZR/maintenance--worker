@@ -10,7 +10,7 @@
 .work-name{
   position: relative;
   font-family: PingFang-SC-Medium;
-  font-size: 37.44rpx;
+  font-size: 32.44rpx;
   color: #3c4350;
   top: 20rpx;
   left: 40rpx;

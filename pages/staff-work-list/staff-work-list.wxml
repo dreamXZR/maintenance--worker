@@ -6,7 +6,7 @@
   <view class="view-hx"></view>
   <view wx:for="{{FixingsList}}">
     <view class="work">
-      <text class="work-name">编号：{{item.number}}  定件人：{{item.worker}}</text>
+      <text class="work-name">编号：{{item.number ?item.number:'暂无'}}  定件人：{{item.worker}}</text>
       <button class="but_pay" bindtap="staffwork" data-id="{{item.id}}" data-number='{{item.number}}' data-worker_id="{{item.worker_id}}">去订件</button>
     </view>
   </view>

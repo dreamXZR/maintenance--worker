@@ -62,8 +62,9 @@
 }
 .process{
   position: relative;
-  height: 360rpx;
+  height: 100%;
   background-color: #fff;
+  padding: 4rpx 0 4rpx 0;
 }
 .process-title{
   height: 100rpx;
@@ -71,7 +72,7 @@
 }
 .process-title-name{
   position: relative;
-  font-size: 35rpx;
+  font-size: 32rpx;
   font-weight: 600;
   width: 250rpx;
   top: 20rpx;
@@ -85,7 +86,7 @@
 }
 .process-title-number{
   position: absolute;
-  font-size: 35rpx;
+  font-size: 32rpx;
   font-weight: 600;
   top: 24rpx;
   left: 470rpx;

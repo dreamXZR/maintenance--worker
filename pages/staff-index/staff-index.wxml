@@ -5,7 +5,7 @@
   <text class="title">维修工作列表</text>
   <scroll-view class="view-list" scroll-y="true">
   <view wx:if="{{orderList.length==0}}" class='order'>
-    <view class="title">暂无工作信息</view>
+    <view class="title" style='left:0'>暂无工作信息</view>
   </view>
   <view wx:for="{{orderList}}">
     <view class="listinfo">
