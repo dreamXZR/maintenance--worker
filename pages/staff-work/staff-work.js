@@ -227,7 +227,7 @@ Page({
         var arr=[]
         for(let i in res.data){
           res.data[i].show=false
-          if(res.data[i].search.indexOf(key)>=0){
+          if (res.data[i].search && res.data[i].search.indexOf(key)>=0){
             res.data[i].show=true
             arr.push(res.data[i])
           }

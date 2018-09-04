@@ -19,7 +19,9 @@ Page({
         icon:'none'
       })
     }
-    
+    // wx.navigateTo({
+    //   url: '/pages/staff-work/staff-work?id=' + e.currentTarget.dataset.id + "&number=" + e.currentTarget.dataset.number
+    // })
     
   },
   /**

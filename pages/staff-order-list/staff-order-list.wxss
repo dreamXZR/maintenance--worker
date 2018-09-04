@@ -102,3 +102,9 @@
   background-color: #FF473D;
   border-radius: 0rpx;
 }
+.order{
+  color: #ced5d5;
+  text-align: center;
+  margin-top: 200rpx;
+  
+}

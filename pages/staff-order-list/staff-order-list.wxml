@@ -3,7 +3,12 @@
 </view>
 <view class="work-list">
   <text class="title">维修步骤列表</text>
+  <view wx:if="{{stepList.length==0}}" class='order'>
+    <image src='../../images/no-message.png' style='width:90rpx;height:92rpx'></image>
+    <view>暂无信息</view>
+  </view>
   <scroll-view class="view-list" scroll-y="true">
+  
   <view wx:for="{{stepList}}">
     <view class="listinfo">
       <text class="list-name">{{item.p_name}}{{item.name}} 数量：{{item.number}}</text>
