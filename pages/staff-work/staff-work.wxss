@@ -100,13 +100,15 @@
   font-size: 35rpx;
   left: 200rpx;
   color: #9b9b9b;
+  width:250rpx;
+  overflow:hidden;
 }
 .process-first-input{
   position: relative;
   text-align: center;
   font-size: 35rpx;
-  width: 130rpx;
-  left:430rpx;
+  width: 100rpx;
+  left:471rpx;
   top: -47rpx;
   color:#A4A6AD;
   border: 1rpx solid ;

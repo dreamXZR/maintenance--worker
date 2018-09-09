@@ -43,7 +43,13 @@
 .hx{
   height: 20rpx;
 }
-
+.message_num{
+  position: relative;
+  top:10rpx;
+  left:316rpx;
+  font-size: 33rpx;
+  color: #2C2C2C;
+}
 
 
 

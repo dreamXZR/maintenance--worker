@@ -71,6 +71,15 @@ Page({
         }
       })
     }
+    var that = this
+    wx.request({
+      url: api + 'worker/' + wx.getStorageSync('worker_id'),
+      success: function (res) {
+        that.setData({
+          num: res.data.notification_count
+        })
+      }
+    })
   },
 
   /**
