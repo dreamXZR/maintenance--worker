@@ -14,7 +14,7 @@
   </view>
   <view wx:for="{{recordList}}">
     <view class="message" >
-      <text class="message-name">{{item.number}}{{item.detail}}</text> 
+      <text class="message-name">{{item.number}}{{item.detail}}  数量：{{item.num}}</text> 
        <view class="message-time">{{item.finish_time}}</view> 
     </view>
     <view class="hx"></view>

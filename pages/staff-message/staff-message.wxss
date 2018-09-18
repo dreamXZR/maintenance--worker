@@ -23,7 +23,7 @@
   font-size: 30rpx;
   color: #9DA1A7;
   margin-left: 33rpx;
-  width: 530rpx;
+  width: 400rpx;
   overflow:hidden;
   text-overflow:ellipsis;
   display:-webkit-box;
@@ -35,6 +35,14 @@
   text-align: center;
   margin-top: 200rpx;
   
+}
+.message-detail{
+  position: absolute;
+  top:30rpx;
+  font-size: 30rpx;
+  color: rgb(56, 59, 63);
+  margin-left: 475rpx;
+  text-decoration: underline;
 }
 
 

@@ -85,12 +85,12 @@
   -webkit-box-orient:vertical;
 }
 .process-title-number{
-  position: absolute;
+ 
   font-size: 32rpx;
   font-weight: 600;
-  top: 24rpx;
-  left: 470rpx;
   color: #3c4350;
+  margin-left:200rpx;
+
 }
 .process-first{
   height: 60rpx;
@@ -108,7 +108,7 @@
   text-align: center;
   font-size: 35rpx;
   width: 100rpx;
-  left:471rpx;
+  left:284rpx;
   top: -47rpx;
   color:#A4A6AD;
   border: 1rpx solid ;

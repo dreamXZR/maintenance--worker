@@ -12,6 +12,7 @@ Page({
   
   //接取工作提示
   receiveWork:function(e){
+    var that=this
     wx.showModal({
       title: '提示',
       content: '是否接取工作?',
@@ -21,10 +22,12 @@ Page({
             url: api +'isTaking',
             method:'POST',
             data:{
-                worker_id:wx.getStorageSync('worker_id')
+                worker_id:wx.getStorageSync('worker_id'),
+                order_id:that.data.order_id,
+                step_id: e.currentTarget.dataset.id
             },
             success:function(res){
-              console.log(res.data)
+              
               if(res.data.status){
                 wx.request({
                   url: api +'taking',
@@ -34,6 +37,7 @@ Page({
                     id: e.currentTarget.dataset.id
                   },
                   success:function(res){
+                    
                     if (res.data.status) {
                       wx.showToast({
                         title: res.data.message,
@@ -105,7 +109,8 @@ Page({
       success: function (res) {
         
         that.setData({
-          stepList: res.data.data
+          stepList: res.data.data,
+          order_id: options.id
         })
 
       }

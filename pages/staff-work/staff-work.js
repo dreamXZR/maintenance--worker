@@ -82,10 +82,9 @@ Page({
         order_id: options.id,
       },
       success: function (res) {
-        
         if (res.data.json){
           that.setData({
-            stepList: JSON.parse(res.data.json.order_json)
+            stepList: JSON.parse(res.data.json)
           })
         }
         
@@ -111,7 +110,6 @@ Page({
               type: e.currentTarget.dataset.type
             },
             success:function(res){
-              
               var arr=that.data.stepList.concat(res.data)
               
               that.setData({
@@ -172,6 +170,7 @@ Page({
                     worker_id:wx.getStorageSync('worker_id')
                   },
                   success: function (res) {
+                    
                     if (res.data.status) {
                       wx.showToast({
                         title: res.data.message,
@@ -203,9 +202,10 @@ Page({
     var that=this
     if (e.detail.value){
       
-      var index_arr=e.currentTarget.dataset.index.split('_')
-      var data=that.data.stepList[index_arr[0]].data
-      data[index_arr[1]].value = parseInt(e.detail.value)
+      var index=e.currentTarget.dataset.index
+      var data = that.data.stepList[index]
+      data.value = parseInt(e.detail.value)
+      
     }
     
     
@@ -264,7 +264,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    
   },
 
   /**

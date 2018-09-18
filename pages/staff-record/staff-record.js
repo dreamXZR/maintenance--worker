@@ -34,6 +34,7 @@ Page({
         worker_id:wx.getStorageSync('worker_id')
       },
       success:function(res){
+        
         that.setData({
           recordList:res.data.data
         })

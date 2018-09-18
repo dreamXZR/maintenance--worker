@@ -10,22 +10,41 @@ Page({
   },
   //订件入口
   staffworklist: function () {
-    wx.request({
-      url: api +'isAppoint/'+wx.getStorageSync('worker_id'),
-      success:function(res){
-        if(res.data.status){
-          wx.navigateTo({
-            url: '/pages/staff-work-list/staff-work-list'
-          })
-        }else{
-          wx.showToast({
-            title: res.data.message,
-            icon:'none'
-          })
+    if (wx.getStorageSync('worker_id')) {
+      wx.request({
+        url: api + 'isAppoint/' + wx.getStorageSync('worker_id'),
+        success: function (res) {
+          if (res.data.status==1) {
+            wx.navigateTo({
+              url: '/pages/staff-work-list/staff-work-list'
+            })
+          } else if (res.data.status == 2) {
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              success: function () {
+                setTimeout(function () {
+                  wx.navigateTo({
+                    url: '/pages/staff-myinfo/staff-myinfo',
+                  })
+                }, 2000)
+              }
+            })
+          } else {
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none'
+            })
+          }
+
         }
-        
-      }
-    })
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+    }
+    
     
   },
   //首页
@@ -36,27 +55,53 @@ Page({
   },
   //个人中心
   staffmy: function () {
-    wx.navigateTo({
-      url: '/pages/staff-my/staff-my'
-    })
+    if (wx.getStorageSync('worker_id')) {
+      wx.navigateTo({
+        url: '/pages/staff-my/staff-my'
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+    }
+    
   },
   //接取工作提示
   receiveWork:function(e){
-    wx.request({
-      url: api +'isPass/'+wx.getStorageSync('worker_id'),
-      success:function(res){
-        if(res.data.status){
-          wx.navigateTo({
-            url: '/pages/staff-order-list/staff-order-list?id=' + e.currentTarget.dataset.id,
-          })
-        }else{
-          wx.showToast({
-            title: res.data.message,
-            icon:'none'
-          })
+    if (wx.getStorageSync('worker_id')) {
+      wx.request({
+        url: api + 'isPass/' + wx.getStorageSync('worker_id'),
+        success: function (res) {
+          if (res.data.status==1) {
+            wx.navigateTo({
+              url: '/pages/staff-order-list/staff-order-list?id=' + e.currentTarget.dataset.id,
+            })
+          } else if (res.data.status == 2){
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              success:function(){
+                setTimeout(function(){
+                  wx.navigateTo({
+                    url: '/pages/staff-myinfo/staff-myinfo',
+                  })
+                },2000)
+              }
+            })
+          }else{
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none'
+            })
+          }
         }
-      }
-    })
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+    }
+    
     
   },
   

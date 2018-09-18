@@ -7,7 +7,8 @@
   <view class="hx"></view>
   <view wx:for="{{message}}">
     <view class="message" >
-      <text class="message-name">{{item.content}}</text> 
+      <text class="message-name">{{item.content}}</text>
+      <text class='message-detail' bindtap='message_detail' data-index='{{index}}'>详细</text>
        <view class="message-time">{{item.created_at}}</view> 
     </view>
     <view class="hx"></view>

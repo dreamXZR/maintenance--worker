@@ -24,14 +24,18 @@
     <view class="process">
       <view class="process-title">
         <text class="process-title-name">{{item.step_name}}</text>
-        <text class="process-title-number">数量</text>
-        <view class="close_icon" bindtap="dropStep" data-index="{{index}}">×</view>
+        
+        <view wx:if="{{item.status!=1}}" class="close_icon" bindtap="dropStep" data-index="{{index}}">×</view>
       </view>
-      <view wx:for="{{item.data}}" wx:for-index="idx" wx:for-item="itemName">
-        <view class="process-first">
+      <view wx:for="{{item.data}}" wx:for-index="idx" wx:for-item="itemName" style='display:inline-block;margin-right:24rpx;'>
+        <view class="process-first" >
           <text class="process-first-name">{{itemName.title}}</text>
-          <input class="process-first-input" type="number" value='{{itemName.value}}'  name="t_{{itemName.id}}_{{itemName.parent_id}}" bindinput='changeValue' data-index='{{index}}_{{idx}}'></input>
+          
         </view>
+      </view>
+      <view style='margin-top:12rpx;'>
+        <text class='process-title-number'>数量</text>
+        <input class="process-first-input" type="number" value='{{item.value}}' bindinput='changeValue' data-index='{{index}}' name='{{item.status}}_{{item.step_id}}' disabled="{{item.status==1? 'disabled' :''}}"></input>
       </view>
     </view>
     <view class="view-hx"></view>
