@@ -6,8 +6,8 @@
 <view>
   
   
-    <view class='text'>必须完成微信授权才能继续使用</view>
-    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权微信用户信息</button> 
+    <view class='text'>必须完成微信登陆才能继续使用</view>
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击进行微信登陆</button> 
   
 </view>
 </page>
