@@ -41,12 +41,17 @@
   top: 30rpx;
   font-size: 30rpx;
   color: #9b9b9b;
+  width: 400rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
 }
 .but_pay{
   float: right;
   font-size: 23rpx;
   width:160rpx;
-  margin-top: 30rpx;
   color: #FF473D;
   background-color: #FFFFFF;
   margin-right: 60rpx;
@@ -54,7 +59,7 @@
 }
 .my-work{
   margin-top: 30rpx;
-  height: 200rpx;
+  
   background-color: #fff;
 }
 .my-work-name,.dingjian-name{
@@ -70,10 +75,15 @@
   margin-left: 50rpx;
 }
 .nameinfo{
-  position: relative;
-  top: 30rpx;
+  
   font-size: 30rpx;
   color: #9b9b9b;
+  width: 400rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
 }
 .but_work,.but_dingjian{
   float: right;

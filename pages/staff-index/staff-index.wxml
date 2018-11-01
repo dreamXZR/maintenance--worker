@@ -21,13 +21,21 @@
 </view>
 <view class="my-work">
   <text class="my-work-name">我的维修工作</text>
-  <view class="work-name" wx:if="{{myOrder.length!=0}}">
-    <text class="nameinfo">{{myOrder[0].p_name}}{{myOrder[0].name}} 数量：{{myOrder[0].number}}</text>
-    <button class="but_work" bindtap="accomplishWork" data-id='{{myOrder[0].id}}'>点击完成</button>
+  <scroll-view class="view-list" scroll-y="true" style='height:280rpx;'>
+  <view wx:if="{{myOrder.length==0}}" class='order'>
+    <view class="title" style='left:0'>暂无工作信息</view>
   </view>
-  <view class="work-name"  wx:else>
-    <view style='position:relative;top:20rpx;font-size:32rpx;color:#3c4350;'>暂未接取工作</view>
+  <view wx:for="{{myOrder}}">
+    <view class="listinfo">
+      <text class="list-name" bindtap='detail' data-index='{{index}}'>编号:{{item.order}} {{item.p_name}}{{item.name}} 数量：{{item.number}}</text>
+      
+     <button class="but_pay" bindtap="accomplishWork" data-id='{{item.id}}'>点击完成</button>
+    </view>
+    <view class="list-hx"></view>
   </view>
+    
+    
+  </scroll-view>
 </view>
 <view class="dingjian">
   <text class="dingjian-name">订件</text>

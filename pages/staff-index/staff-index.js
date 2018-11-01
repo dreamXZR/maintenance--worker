@@ -126,9 +126,7 @@ Page({
                   title: res.data.message,
                   icon: 'none',
                   success:function(){
-                    that.setData({
-                      myOrder: []
-                    })
+                    that.myOrder()
                   }
                 })
               }else{
@@ -198,6 +196,12 @@ Page({
       }
     })
     //我的维修任务
+    that.myOrder()
+   
+    
+  },
+  myOrder:function(){
+    var that=this
     wx.request({
       url: api + 'taked',
       method: 'POST',
@@ -210,9 +214,17 @@ Page({
         })
       }
     })
-    
   },
-
+  detail: function (e){
+    var index = e.currentTarget.dataset.index
+    var that = this
+    var data = that.data.myOrder[index]
+    wx.showModal({
+      title: '详细信息',
+      content: '编号：' + data.order+' '+data.p_name+data.name+' '+'数量:'+data.number,
+      showCancel: false
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -231,7 +243,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.onShow()
+    wx.stopPullDownRefresh()
+
   },
 
   /**

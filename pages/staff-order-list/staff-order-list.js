@@ -24,7 +24,8 @@ Page({
             data:{
                 worker_id:wx.getStorageSync('worker_id'),
                 order_id:that.data.order_id,
-                step_id: e.currentTarget.dataset.id
+                step_id: e.currentTarget.dataset.id,
+                step_p_id: e.currentTarget.dataset.pid
             },
             success:function(res){
               
@@ -107,7 +108,6 @@ Page({
     wx.request({
       url: api + 'OrderShow/'+options.id,
       success: function (res) {
-        
         that.setData({
           stepList: res.data.data,
           order_id: options.id
@@ -158,7 +158,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.onShow()
+    wx.stopPullDownRefresh()
+
   },
 
   /**
