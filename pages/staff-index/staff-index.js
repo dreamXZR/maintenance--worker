@@ -225,6 +225,44 @@ Page({
       showCancel: false
     })
   },
+  abandon:function(e){
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '是否放弃该工作?',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: api + 'abandon',
+            method: 'POST',
+            data: {
+              id: e.currentTarget.dataset.id
+            },
+            success: function (res) {
+              if (res.data.status) {
+                wx.showToast({
+                  title: res.data.message,
+                  icon: 'none',
+                  success: function () {
+                    that.myOrder()
+                  }
+                })
+              } else {
+                wx.showToast({
+                  title: res.data.message,
+                  icon: 'none'
+                })
+              }
+            }
+
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+    
   /**
    * 生命周期函数--监听页面隐藏
    */
