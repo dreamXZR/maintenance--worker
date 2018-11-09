@@ -1,7 +1,5 @@
 /* pages/staff-index/staff-index.wxss */
-.name-view{
-  height: 80rpx;
-}
+
 .name{
   padding-top: 20rpx;
   position: relative;
@@ -11,7 +9,7 @@
   color: #3c4350;
 }
 .work-list{
-  height: 500rpx;
+  height: 580rpx;
   background-color: #fff;
 }
 .title{
@@ -111,4 +109,30 @@
   margin-top: 50rpx;
   background-color: #FF473D;
   border-radius: 0rpx;
+}
+
+
+.status-box{
+    width:100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    margin: 20rpx auto;
+}
+
+.status-box .status-label{
+    width: 25%;
+    height: 100%;
+    text-align: center;
+    font-size:28rpx;
+    color:#353535;
+    box-sizing: border-box;
+    position: relative;
+}
+.status-box .status-label.active{
+    color:#FF473D;
+    border-bottom: 6rpx solid #FF473D;
 }

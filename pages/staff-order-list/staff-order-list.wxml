@@ -1,18 +1,37 @@
 <view class="name-view">
   <view class="name">{{name}}</view>
 </view>
+<view class="status-box">
+  <view bindtap="statusTap" class="status-label {{index == currentTpye ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
+      {{item}}
+      <view class="{{tabClass[index]}}" wx:if="{{index!=0}}"></view>
+  </view>
+</view>
 <view class="work-list">
-  <text class="title">维修步骤列表</text>
+  
   <view wx:if="{{stepList.length==0}}" class='order'>
     <image src='../../images/no-message.png' style='width:90rpx;height:92rpx'></image>
     <view>暂无信息</view>
   </view>
-  <scroll-view class="view-list" scroll-y="true">
+  <scroll-view class="view-list" scroll-y="true" wx:if="{{currentTpye==0}}">
   
   <view wx:for="{{stepList}}">
     <view class="listinfo">
       <text class="list-name">{{item.p_name}}{{item.name}} 数量：{{item.number}}</text>
       <button class="but_pay" bindtap="receiveWork" data-id='{{item.id}}' data-pid='{{item.step_p_id}}'>接取工作</button>
+    </view>
+    <view class="list-hx"></view>
+  </view>
+    
+    
+  </scroll-view>
+  <scroll-view class="view-list" scroll-y="true" wx:if="{{currentTpye==1}}">
+  
+  <view wx:for="{{stepList}}">
+    <view class="listinfo">
+      <text class="list-name">{{item.p_name}}{{item.name}} 数量：{{item.number}}</text>
+      <view class="list-name" style='float: right;width:160rpx;'>{{item.worker_name}}</view>
+      
     </view>
     <view class="list-hx"></view>
   </view>

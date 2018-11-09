@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    myOrder:[]
+    myOrder:[],
+    statusType: ["拆", "加工","装","检测"],
+    currentTpye: 0,
   },
   //订件入口
   staffworklist: function () {
@@ -176,16 +178,8 @@ Page({
    */
   onShow: function () {
     var that=this
-    //维修工作列表
-    wx.request({
-      url: api +'OrderList',
-      success:function(res){
-        that.setData({
-          orderList:res.data
-        })
-       
-      }
-    })
+    
+    
     //公司信息
     wx.request({
       url: api + 'compayInfo',
@@ -195,11 +189,28 @@ Page({
         })
       }
     })
-    //我的维修任务
+    
     that.myOrder()
-   
+    that.orderList(0)
     
   },
+  //维修工作列表
+  orderList:function(select){
+    var that=this
+    wx.request({
+      url: api + 'OrderList',
+      data:{
+        select:select
+      },
+      success: function (res) {
+        that.setData({
+          orderList: res.data
+        })
+
+      }
+    })
+  },
+  //我的维修任务
   myOrder:function(){
     var that=this
     wx.request({
@@ -225,6 +236,7 @@ Page({
       showCancel: false
     })
   },
+  //放弃工作
   abandon:function(e){
     var that = this;
     wx.showModal({
@@ -262,7 +274,15 @@ Page({
       }
     })
   },
-    
+  //选择标签
+  statusTap: function (e) {
+    var that = this
+    var curType = e.currentTarget.dataset.index
+    this.setData({
+      currentTpye: curType
+    });
+    that.orderList(curType)
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

@@ -6,10 +6,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    statusType: ["未完成", "已完成"],
+    currentTpye: 0,
   },
   
-  
+  statusTap: function (e) {
+    var that=this
+    var curType = e.currentTarget.dataset.index
+    this.setData({
+      currentTpye: curType
+    });
+    that.stepList(curType)
+  },
   //接取工作提示
   receiveWork:function(e){
     var that=this
@@ -105,18 +113,31 @@ Page({
   onLoad: function (options) {
     var that = this
     //维修工作列表
+    that.setData({
+      order_id: options.id
+    })
+    that.stepList(0)
+  },
+  stepList:function(status){
+    var that=this
+    var order_id=that.data.order_id
     wx.request({
-      url: api + 'OrderShow/'+options.id,
+      url: api + 'OrderShow',
+      method:'GET',
+      data:{
+        order_id: order_id,
+        status:status
+      },
       success: function (res) {
+       
         that.setData({
           stepList: res.data.data,
-          order_id: options.id
+          
         })
 
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
