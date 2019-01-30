@@ -1,48 +1,50 @@
+<view scroll-y="true" style='height:100%;'>
+    <view class="work-list">
+    <text class="title">维修工作列表</text>
+    <view class="status-box">
+      <view bindtap="statusTap" class="status-label {{index == currentTpye ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
+          {{item}}
+          <view class="{{tabClass[index]}}" wx:if="{{index!=0}}"></view>
+      </view>
+    </view>
+    <scroll-view class="view-list" scroll-y="true">
+    <view wx:if="{{orderList.length==0}}" class='order'>
+      <view class="title" style='left:0'>暂无工作信息</view>
+    </view>
+    <view wx:for="{{orderList}}">
+      <view class="listinfo">
+        <text class="list-name" wx:if="{{item.type!=null}}" bindtap='message_detail' data-index='{{index}}'> 编号：{{item.number}} {{item.type}}_{{item.servicing}}</text>
+        <text class="list-name" wx:if="{{item.type==null}}">编号：{{item.number}} 暂无信息</text>
+        <button class="but_pay" bindtap="receiveWork" data-id='{{item.id}}'>点击查看</button>
+      </view>
+      <view class="list-hx"></view>
+    </view>
+      
+      
+    </scroll-view>
+  </view>
+  <view class="my-work">
+    <text class="my-work-name">我的维修工作 数量：({{myOrder.length}})</text>
+    <scroll-view class="view-list" scroll-y="true" style='height:280rpx;'>
+    <view wx:if="{{myOrder.length==0}}" class='order'>
+      <view class="title" style='left:0'>暂无工作信息</view>
+    </view>
+    <view wx:for="{{myOrder}}">
+      <view class="listinfo">
+        <text class="list-name" bindtap='detail' data-index='{{index}}'>编号:{{item.order}} {{item.p_name}}{{item.name}} 数量：{{item.number}}</text>
+        <button class="but_pay" bindtap="abandon" data-id='{{item.id}}' style='width:119rpx;margin-right:60rpx;'>放弃</button>
+      <button class="but_pay" bindtap="accomplishWork" data-id='{{item.id}}' style='width:119rpx;margin-right:20rpx;'>完成</button>
+      </view>
+      <view class="list-hx"></view>
+    </view>
+      
+      
+    </scroll-view>
+  </view>
+  <view class="dingjian">
+    <text class="dingjian-name">订件</text>
+    <button class="but_dingjian" bindtap="staffworklist">订件入口</button>
+  </view>
+  <button  class="button" bindtap="staffmy">个人中心</button>
+</view>
 
-<view class="work-list">
-  <text class="title">维修工作列表</text>
-  <view class="status-box">
-    <view bindtap="statusTap" class="status-label {{index == currentTpye ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
-        {{item}}
-        <view class="{{tabClass[index]}}" wx:if="{{index!=0}}"></view>
-    </view>
-  </view>
-  <scroll-view class="view-list" scroll-y="true">
-  <view wx:if="{{orderList.length==0}}" class='order'>
-    <view class="title" style='left:0'>暂无工作信息</view>
-  </view>
-  <view wx:for="{{orderList}}">
-    <view class="listinfo">
-      <text class="list-name" wx:if="{{item.type!=null}}">{{item.type}}_{{item.servicing}} 编号：{{item.number}}</text>
-      <text class="list-name" wx:if="{{item.type==null}}">暂无信息  编号：{{item.number}}</text>
-      <button class="but_pay" bindtap="receiveWork" data-id='{{item.id}}'>点击查看</button>
-    </view>
-    <view class="list-hx"></view>
-  </view>
-    
-    
-  </scroll-view>
-</view>
-<view class="my-work">
-  <text class="my-work-name">我的维修工作 数量：({{myOrder.length}})</text>
-  <scroll-view class="view-list" scroll-y="true" style='height:280rpx;'>
-  <view wx:if="{{myOrder.length==0}}" class='order'>
-    <view class="title" style='left:0'>暂无工作信息</view>
-  </view>
-  <view wx:for="{{myOrder}}">
-    <view class="listinfo">
-      <text class="list-name" bindtap='detail' data-index='{{index}}'>编号:{{item.order}} {{item.p_name}}{{item.name}} 数量：{{item.number}}</text>
-      <button class="but_pay" bindtap="abandon" data-id='{{item.id}}' style='width:119rpx;margin-right:60rpx;'>放弃</button>
-     <button class="but_pay" bindtap="accomplishWork" data-id='{{item.id}}' style='width:119rpx;margin-right:20rpx;'>完成</button>
-    </view>
-    <view class="list-hx"></view>
-  </view>
-    
-    
-  </scroll-view>
-</view>
-<view class="dingjian">
-  <text class="dingjian-name">订件</text>
-  <button class="but_dingjian" bindtap="staffworklist">订件入口</button>
-</view>
-<button  class="button" bindtap="staffmy">个人中心</button>

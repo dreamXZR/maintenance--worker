@@ -105,7 +105,7 @@
 .order{
   color: #ced5d5;
   text-align: center;
-  margin-top: 200rpx;
+  /* margin-top: 200rpx; */
   
 }
 

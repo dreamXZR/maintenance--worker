@@ -178,20 +178,11 @@ Page({
    */
   onShow: function () {
     var that=this
-    
-    
-    //公司信息
-    wx.request({
-      url: api + 'compayInfo',
-      success: function (res) {
-        that.setData({
-          name: res.data.compay_info.name,
-        })
-      }
-    })
-    
     that.myOrder()
     that.orderList(0)
+    that.setData({
+      currentTpye: 0,
+    })
     
   },
   //维修工作列表
@@ -282,6 +273,15 @@ Page({
       currentTpye: curType
     });
     that.orderList(curType)
+  },
+  message_detail:function(e){
+    var index = e.currentTarget.dataset.index
+    var that = this
+    wx.showModal({
+      title: '消息',
+      content: '编号：' + that.data.orderList[index].number + ' ' + that.data.orderList[index].type + '_' + that.data.orderList[index].servicing,
+      showCancel: false
+    })
   },
   /**
    * 生命周期函数--监听页面隐藏

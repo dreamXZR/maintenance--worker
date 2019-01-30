@@ -10,7 +10,7 @@
 <view class="work-list">
   
   <view wx:if="{{stepList.length==0}}" class='order'>
-    <image src='../../images/no-message.png' style='width:90rpx;height:92rpx'></image>
+    <image src='../../images/no-message.png' style='width:90rpx;height:92rpx; margin-top: 200rpx;'></image>
     <view>暂无信息</view>
   </view>
   <scroll-view class="view-list" scroll-y="true" wx:if="{{currentTpye==0}}">
@@ -30,7 +30,7 @@
   <view wx:for="{{stepList}}">
     <view class="listinfo">
       <text class="list-name">{{item.p_name}}{{item.name}} 数量：{{item.number}}</text>
-      <view class="list-name" style='float: right;width:160rpx;'>{{item.worker_name}}</view>
+      <view class="list-name" style='float: right;width:190rpx;'>{{item.worker_name}}</view>
       
     </view>
     <view class="list-hx"></view>

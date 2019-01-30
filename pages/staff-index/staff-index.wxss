@@ -39,7 +39,7 @@
   top: 30rpx;
   font-size: 30rpx;
   color: #9b9b9b;
-  width: 400rpx;
+  width: 450rpx;
   overflow:hidden;
   text-overflow:ellipsis;
   display:-webkit-box;
@@ -99,14 +99,14 @@
   background-color: #fff;
 }
 .button{
-  z-index: 1;
-  position: fixed;
+  
+  
   width: 100%;
   bottom: 0rpx;
   font-size: 40rpx;
   height: 94rpx;
   color: #FFFFFF;
-  margin-top: 50rpx;
+  
   background-color: #FF473D;
   border-radius: 0rpx;
 }

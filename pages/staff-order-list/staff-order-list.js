@@ -53,8 +53,8 @@ Page({
                         icon: 'none',
                         success:function(){
                           setTimeout(function(){
-                            wx.navigateBack({})
-                          },2000)
+                            that.stepList(0)
+                          },1000)
                         }
                       })
                     }else{
